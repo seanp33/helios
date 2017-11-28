@@ -1,8 +1,8 @@
 const repl = require('repl')
 const Game = require('./lib/Game')
 const Player = require('./lib/Player')
-const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, OPEN, CLOSE, UNLOCK, LOCK, HACK, FEEL, SPEAKTO } = require('./lib/Actions')
-const { ACTION, MESSAGE, SCENE_ACTIVATED } = require('./lib/Events')
+const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, CLIMB, DESCEND, OPEN, CLOSE, UNLOCK, LOCK, HACK, TOUCH, SPEAKTO } = require('./lib/Actions')
+const { ACTION, MESSAGE, SCENE_ACTIVATED, GOTO_NEXT_SCENE } = require('./lib/Commands')
 
 let game = new Game()
 let player = new Player()
@@ -147,6 +147,22 @@ replServer.defineCommand('look', {
     }
 })
 
+replServer.defineCommand('climb', {
+    help: 'Used to climb up something',
+    action(direction) {
+        game.apply(ACTION, { type: CLIMB, tags: [direction] })
+        readyPrompt()
+    }
+})
+
+replServer.defineCommand('descend', {
+    help: 'Used to descend down something',
+    action(direction) {
+        game.apply(ACTION, { type: DESCEND, tags: [direction] })
+        readyPrompt()
+    }
+})
+
 replServer.defineCommand('speak-to', {
     help: 'Used to speak to a character',
     action(object) {
@@ -195,10 +211,10 @@ replServer.defineCommand('hack', {
     }
 })
 
-replServer.defineCommand('feel', {
-    help: 'Used to feel a thing',
+replServer.defineCommand('touch', {
+    help: 'Used to touch a thing',
     action(object) {
-        game.apply(ACTION, { type: FEEL, tags: [object] })
+        game.apply(ACTION, { type: TOUCH, tags: [object] })
         readyPrompt()
     }
 })
@@ -215,6 +231,9 @@ game.on(SCENE_ACTIVATED, () => {
     readyPrompt()
 })
 
+game.on(GOTO_NEXT_SCENE, () => {
+    game.loadScene(game.scene.next)
+})
 
 game.on(MESSAGE, (message) => {
     console.log(message)

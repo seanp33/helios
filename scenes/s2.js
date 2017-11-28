@@ -1,48 +1,63 @@
-module.exports = {
-    id: "s2",
-    title: "The Commands",
-    text: `Commands are issued at the prompt with preceeding period character. For example, the most important command is the ".help" command. When ever you need help with in-game instructions us the ".help" command.
+const Scene = require('../lib/Scene')
 
-    The following commands are available:
+class Scene2 extends Scene {
 
-    .help: Game play instructions and command reference.
+    constructor() {
+        super(
+            "The Commands",
+            `Commands are issued at the prompt with a preceding period character. For example, the most important command is the ".help" command. Whenever you need help with in-game instructions use the ".help" command.
 
-    .inventory: List the items in your inventory.
+            The following commands are available:
 
-    .status: List status information of your player, their health, time and orientation.
+            .help: Game play instructions and command reference.
 
-    .examine <game object or character>: Inspect something in the game. You'll use the .examine command frequently.
+            .inventory: List the items in your inventory.
 
-    .pull <game object>: Used to interact with objects throughout the game.
+            .status: List status information of your player, their health, time and orientation.
 
-    .push <game object>: Used to interact with objects throughout the game.
+            .examine <game object or character>: Inspect something in the game. You'll use the .examine command frequently.
 
-    .turn <game object>: Used to interact with objects throughout the game.
+            .pull <game object>: Used to interact with objects throughout the game.
 
-    .take <game object>: Used to take an object into your posession. Objects that to take become part of your inventory.
+            .push <game object>: Used to interact with objects throughout the game.
 
-    .drop <game object>: Used to dispose of an object currently in your posession. Objects that you drop are removed from your inventory.
+            .turn <game object>: Used to interact with objects throughout the game.
 
-    .walk <direction>: Walk North, North East, East, South East, South, South West, West, North West. Direction can also be specified in abriviated form (N, NE, E, SE, S, SW, W, NW)
+            .take <game object>: Used to take an object into your posession. Objects that to take become part of your inventory.
 
-    .run <direction>: Similar to .walk... just faster.
+            .drop <game object>: Used to dispose of an object currently in your posession. Objects that you drop are removed from your inventory.
 
-    .look <direction>: Similar to .walk and .run... but just looking.
+            .walk <direction>: Walk North, North East, East, South East, South, South West, West, North West. Direction can also be specified in abriviated form (N, NE, E, SE, S, SW, W, NW)
 
-    .speak-to <character>: Begin a dialog with a game character.
+            .run <direction>: Similar to .walk... just faster.
 
-    .open <game object>: Used to open something that closed.
+            .look <direction>: Similar to .walk and .run... but just looking.
 
-    .close <game object>: Used to close something that is open.
+            .speak-to <character>: Begin a dialog with a game character.
 
-    .unlock <game object>: Used to unlock something that is locked.
+            .open <game object>: Used to open something that closed.
 
-    .lock <game object>: Used to lock something that is unlocked.
+            .close <game object>: Used to close something that is open.
 
-    .hack <game object>: Used to hack a piece of technology.
+            .unlock <game object>: Used to unlock something that is locked.
 
-    .feel <game object>: Used to feel something in the game.
-    `,
-    gobs: [],
-    next: "s3"
+            .lock <game object>: Used to lock something that is unlocked.
+
+            .hack <game object>: Used to hack a piece of technology.
+
+            .touch <game object>: Used to touch something in the game.`,
+
+            "s3"
+        )
+    }
+
+    init(game) {
+        super.init(game)
+    }
+
+    destroy() {
+        super.destroy()
+    }
 }
+
+module.exports = new Scene2()
