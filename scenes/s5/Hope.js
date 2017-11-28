@@ -16,7 +16,7 @@ class Hope {
         if (response) {
             this.game.apply(MESSAGE, `H.O.P.E >> ${response}`)
         } else {
-            this.game.apply(MESSAGE, `H.O.P.E >> I'm sorry, I am not presently aware of ${subject}. Perhaps you should issue a .query instead.`)
+            this.game.apply(MESSAGE, `H.O.P.E >> I'm sorry, I am not presently aware of "${subject}". Perhaps you should issue a .query instead.`)
         }
     }
 

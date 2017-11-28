@@ -4,6 +4,7 @@ const Player = require('./lib/Player')
 const { parseTagAndSubject } = require('./lib/Utils')
 const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, CLIMB, DESCEND, OPEN, CLOSE, UNLOCK, LOCK, HACK, TOUCH, SPEAKTO, ASK } = require('./lib/Actions')
 const { ACTION, MESSAGE, SCENE_ACTIVATED, GOTO_NEXT_SCENE } = require('./lib/Commands')
+const DIVIDER = '. . . . . . . . . . . . . . . . . . .'
 
 let game = new Game()
 let player = new Player()
@@ -247,6 +248,7 @@ game.on(GOTO_NEXT_SCENE, () => {
 
 game.on(MESSAGE, (message) => {
     console.log(message)
+    console.log(DIVIDER)
 })
 
 game.loadScene('s0')
