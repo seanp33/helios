@@ -1,18 +1,14 @@
-const { EventEmitter } = require('events')
-
 const { tagMatch } = require('../../lib/Utils')
 const { MESSAGE, ACTION, GOTO_NEXT_SCENE } = require('../../lib/Commands')
 const { EXAMINE, TOUCH, PUSH, HACK } = require('../../lib/Actions')
 
-const TAGS = ['touch screen computer terminal', 'touch screen', 'computer terminal', 'terminal', 'computer', 'screen']
+const TAGS = ['touch screen computer terminal', 'touch screen', 'computer terminal', 'terminal', 'flight computer', 'computer', 'screen']
 
-class Terminal extends EventEmitter {
+class Terminal {
     constructor(game) {
-        super()
         this.game = game
         this.actionHandler = this.onAction.bind(this)
         this.game.on(ACTION, this.actionHandler)
-
     }
 
     onAction(action) {
@@ -47,7 +43,6 @@ class Terminal extends EventEmitter {
 
     destroy() {
         this.game.removeListener(ACTION, this.actionHandler)
-        this.removeAllListeners()
     }
 }
 

@@ -35,6 +35,8 @@ class Scene2 extends Scene {
 
             .speak-to <character>: Begin a dialog with a game character.
 
+            .ask <character> about <subject>: Ask a game character about something.
+
             .open <game object>: Used to open something that closed.
 
             .close <game object>: Used to close something that is open.

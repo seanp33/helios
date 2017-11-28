@@ -1,4 +1,3 @@
-const { EventEmitter } = require('events')
 const { Handle, PULLED } = require('./Handle')
 const { Terminal } = require('./Terminal')
 const { MESSAGE, ACTION } = require('../../lib/Commands')
@@ -7,10 +6,9 @@ const { tagMatch } = require('../../lib/Utils')
 
 const TAGS = ['cryogenic sleep chamber', 'sleep chamber', 'chamber', 'pod', 'bed']
 
-class SleepChamber extends EventEmitter {
+class SleepChamber{
 
     constructor(game) {
-        super()
         this.handle = new Handle(game)
         this.terminal = new Terminal(game)
         this.game = game
@@ -41,7 +39,6 @@ class SleepChamber extends EventEmitter {
         this.handle.destroy()
         this.terminal.destroy()
         this.game.removeListener(ACTION, this.actionHandler)
-        this.removeAllListeners()
     }
 }
 

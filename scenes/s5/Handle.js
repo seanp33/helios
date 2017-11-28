@@ -1,14 +1,11 @@
-const { EventEmitter } = require('events')
 const { tagMatch } = require('../../lib/Utils')
 const { MESSAGE, ACTION, GOTO_NEXT_SCENE } = require('../../lib/Commands')
 const { EXAMINE, PULL, PUSH, UNLOCK } = require('../../lib/Actions')
 
 const TAGS = ['release handle', 'release', 'handle']
-const PULLED = 'PULLED'
 
-class Handle extends EventEmitter {
+class Handle {
     constructor(game) {
-        super()
         this.game = game
         this.actionHandler = this.onAction.bind(this)
         this.game.on(ACTION, this.actionHandler)
@@ -39,7 +36,6 @@ class Handle extends EventEmitter {
 
     destroy() {
         this.game.removeListener(ACTION, this.actionHandler)
-        this.removeAllListeners()
     }
 }
 

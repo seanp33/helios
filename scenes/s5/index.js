@@ -1,5 +1,6 @@
 const Scene = require('../../lib/Scene')
 const SleepChamber = require('./SleepChamber')
+const Hope = require('./Hope')
 
 class Scene5 extends Scene {
     constructor() {
@@ -15,6 +16,7 @@ class Scene5 extends Scene {
     init(game) {
         super.init(game)
         this.gobs.push(new SleepChamber(game))
+        this.gobs.push(new Hope(game))
     }
 
     destroy() {

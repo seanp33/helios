@@ -1,7 +1,8 @@
 const repl = require('repl')
 const Game = require('./lib/Game')
 const Player = require('./lib/Player')
-const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, CLIMB, DESCEND, OPEN, CLOSE, UNLOCK, LOCK, HACK, TOUCH, SPEAKTO } = require('./lib/Actions')
+const { parseTagAndSubject } = require('./lib/Utils')
+const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, CLIMB, DESCEND, OPEN, CLOSE, UNLOCK, LOCK, HACK, TOUCH, SPEAKTO, ASK } = require('./lib/Actions')
 const { ACTION, MESSAGE, SCENE_ACTIVATED, GOTO_NEXT_SCENE } = require('./lib/Commands')
 
 let game = new Game()
@@ -167,6 +168,15 @@ replServer.defineCommand('speak-to', {
     help: 'Used to speak to a character',
     action(object) {
         game.apply(ACTION, { type: SPEAKTO, tags: [object] })
+        readyPrompt()
+    }
+})
+
+replServer.defineCommand('ask', {
+    help: 'Used to ask a character a question about something',
+    action(object) {
+        let parsed = parseTagAndSubject(object)
+        game.apply(ACTION, { type: ASK, tags: [parsed.tag], subject: parsed.subject })
         readyPrompt()
     }
 })
