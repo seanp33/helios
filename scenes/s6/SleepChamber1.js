@@ -18,7 +18,7 @@ class SleepChamber1 {
         if (!tagMatch(tags, TAGS)) return
         switch (type) {
             case EXAMINE:
-                this.game.apply(MESSAGE, `The interior of Chamber 1 appears to have sustained fire damage. The normal translucency of the the chamber's dome is distorted by a layer of dark vapor that has adhered to the inside of the dome. The seam of the chamber's pearly white chassis and its glass dome are lined with long fingers of smoke stains - a sign of extreme thermal activity within the chamber. A small unaffected area remains on the surface of the chared dome, forming a kind of porthole into whatever horror the chamber's passenger had sustained.`)
+                this.game.apply(MESSAGE, `Chamber 1 appears to have sustained fire damage. The normal translucency of the the chamber's dome is distorted by a think layer of carbon that has adhered to the inside of the dome. The seam of the chamber's pearly white chassis and its glass dome are lined with long fingers of smoke stains - a sign of extreme thermal activity within the chamber. An unaffected area remains on the surface of the chared dome, forming a small window into whatever horror the chamber's passenger has sustained.`)
                 break
             default:
                 this.game.apply(MESSAGE, `You cannot ${type} Sleep Chamber 1`)

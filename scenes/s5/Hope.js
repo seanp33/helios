@@ -2,7 +2,7 @@ const { tagMatch, getResponseForSubject } = require('../../lib/Utils')
 const { MESSAGE, ACTION, GOTO_NEXT_SCENE } = require('../../lib/Commands')
 const { EXAMINE, HACK, SPEAKTO, ASK } = require('../../lib/Actions')
 
-const TAGS = ['H.O.P.E', 'hope']
+const TAGS = ['h.o.p.e', 'hope']
 
 class Hope {
     constructor(game) {
