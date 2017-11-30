@@ -11,5 +11,8 @@
     "lib": "lib"
   },
   "description": "",
-  "dependencies": {}
+  "dependencies": {
+    "marked": "^0.3.6",
+    "marked-terminal": "^2.0.0"
+  }
 }

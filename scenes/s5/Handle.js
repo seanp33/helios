@@ -16,20 +16,20 @@ class Handle {
         if (!tagMatch(tags, TAGS)) return
         switch (type) {
             case EXAMINE:
-                this.game.apply(MESSAGE, `This appears to be a pull-handle for opening the overhead dome of Sleep Chamber.`)
+                this.game.apply(MESSAGE, `This appears to be a pull-handle for opening the overhead dome of the **sleep chamber**.`)
                 break
             case PULL:
-                this.game.apply(MESSAGE, `The handle pulls easily in your hand. You hear a series of confirming beeps, as stale, preasurized air rushes past you. The glass dome above comes to life, sliding out of view.`)
+                this.game.apply(MESSAGE, `The **handle** pulls easily in your hand. You hear a series of confirming beeps, as stale, preasurized air rushes past you. The glass dome above comes to life, sliding out of view.`)
                 this.game.apply(GOTO_NEXT_SCENE)
                 break
             case PUSH:
-                this.game.apply(MESSAGE, `You cannot open your Sleep Chamber is that way.`)
+                this.game.apply(MESSAGE, `You cannot open your sleep chamber is that way.`)
                 break
             case UNLOCK:
-                this.game.apply(MESSAGE, `You cannot unlock your Sleep Chamber in that way.`)
+                this.game.apply(MESSAGE, `You cannot unlock your sleep chamber in that way.`)
                 break
             default:
-                this.game.apply(MESSAGE, `You cannot ${type} the Sleep Chamber`)
+                this.game.apply(MESSAGE, `You cannot ${type} the sleep chamber`)
                 break
         }
     }

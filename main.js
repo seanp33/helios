@@ -4,7 +4,11 @@ const Player = require('./lib/Player')
 const { parseTagAndSubject } = require('./lib/Utils')
 const { INVENTORY, EXAMINE, TAKE, DROP, PUSH, PULL, TURN, WALK, RUN, LOOK, CLIMB, DESCEND, OPEN, CLOSE, UNLOCK, LOCK, HACK, TOUCH, SPEAKTO, ASK } = require('./lib/Actions')
 const { ACTION, MESSAGE, SCENE_ACTIVATED, GOTO_NEXT_SCENE } = require('./lib/Commands')
-const DIVIDER = '. . . . . . . . . . . . . . . . . . .'
+const marked = require('marked');
+const TerminalRenderer = require('marked-terminal');
+marked.setOptions({
+    renderer: new TerminalRenderer()
+});
 
 let game = new Game()
 let player = new Player()
@@ -34,7 +38,7 @@ const autoNext = () => {
 
 const getPrompt = () => {
     if (autoNext()) {
-        return '> [ENTER]'
+        return '> [ENTER] '
     } else {
         return '> '
     }
@@ -247,8 +251,7 @@ game.on(GOTO_NEXT_SCENE, () => {
 })
 
 game.on(MESSAGE, (message) => {
-    console.log(message)
-    console.log(DIVIDER)
+    console.log(marked(message))
 })
 
 game.loadScene('s0')

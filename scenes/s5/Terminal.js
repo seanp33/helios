@@ -16,7 +16,7 @@ class Terminal {
         if (!tagMatch(tags, TAGS)) return
         switch (type) {
             case EXAMINE:
-                this.game.apply(MESSAGE, `The terminal appears to be a standard issue touch screen flight computer. The screen is dark with the exception of the following readout at the top-left.
+                this.game.apply(MESSAGE, `The **terminal** appears to be a standard issue touch screen flight computer. The screen is dark with the exception of the following readout at the top-left.
                 "Chamber No. : 8"
                 "Passenger : Rya Trice",
                 "Rank : Communications Engineer, 2nd Class"
@@ -26,10 +26,11 @@ class Terminal {
                 `)
                 break;
             case HACK:
-                this.game.apply(MESSAGE, `You lack the necessary skills to hack a flight computer at this time.`)
+                this.game.apply(MESSAGE, `You lack the necessary skills to hack a **flight computer** at this time.`)
                 break
             case TOUCH:
             case PUSH:
+                // TODO: what do we want to do here - have threads for each menu? To support... backstory?
                 this.game.apply(MESSAGE, `The terminal's dark screen smoothly transitions to white, showing a readout of your vitals and three selections across the top of the display.
 
 | *VITALS  |  QUERY  |  OPEN

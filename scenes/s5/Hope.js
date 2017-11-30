@@ -1,4 +1,4 @@
-const { tagMatch, getResponseForSubject } = require('../../lib/Utils')
+const { HTERM, tagMatch, getResponseForSubject } = require('../../lib/Utils')
 const { MESSAGE, ACTION, GOTO_NEXT_SCENE } = require('../../lib/Commands')
 const { EXAMINE, HACK, SPEAKTO, ASK } = require('../../lib/Actions')
 
@@ -14,9 +14,9 @@ class Hope {
     onAsk(subject) {
         let response = getResponseForSubject(subject)
         if (response) {
-            this.game.apply(MESSAGE, `H.O.P.E >> ${response}`)
+            this.game.apply(MESSAGE, `${HTERM} "${response}"`)
         } else {
-            this.game.apply(MESSAGE, `H.O.P.E >> I'm sorry, I am not presently aware of "${subject}". Perhaps you should issue a .query instead.`)
+            this.game.apply(MESSAGE, `${HTERM} "I'm sorry, I am not presently aware of "${subject}". Perhaps you should issue a .query instead."`)
         }
     }
 
@@ -25,7 +25,7 @@ class Hope {
         if (!tagMatch(tags, TAGS)) return
         switch (type) {
             case SPEAKTO:
-                this.game.apply(MESSAGE, `"H.O.P.E >> Hello Rya Trice. I am your HUX Omnipresent Programmable Entity, and I am here to serve you. I am available for questions at any time, though, I may not have the answer immediately. This latency is due to the phsical nature of my logic circits, the speed of light, and the laws of space-time. If you would like me to process your query, and return an answer at a later time, please issue it using the .query <subject> command. If I know the answer at the time of query I will return it immediately, otherwise I will schedule your query and process it as soon as possible."`)
+                this.game.apply(MESSAGE, `"${HTERM} Hello Rya Trice. I am your HUX Omnipresent Programmable Entity, and I am here to serve you. I am available for questions at any time, though, I may not have the answer immediately. This latency is due to the phsical nature of my logic circits, the speed of light, and the laws of space-time. If you would like me to process your query, and return an answer at a later time, please issue it using the .query <subject> command. If I know the answer at the time of query I will return it immediately, otherwise I will schedule your query and process it as soon as possible."`)
                 break
             case ASK:
                 this.onAsk(subject)
