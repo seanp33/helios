@@ -25,7 +25,7 @@ class Hope {
         if (!tagMatch(tags, TAGS)) return
         switch (type) {
             case SPEAKTO:
-                this.game.apply(MESSAGE, `"${HTERM} Hello Rya Trice. I am your HUX Omnipresent Programmable Entity, and I am here to serve you. I am available for questions at any time, though, I may not have the answer immediately. This latency is due to the phsical nature of my logic circits, the speed of light, and the laws of space-time. If you would like me to process your query, and return an answer at a later time, please issue it using the .query <subject> command. If I know the answer at the time of query I will return it immediately, otherwise I will schedule your query and process it as soon as possible."`)
+                this.game.apply(MESSAGE, `"${HTERM} Hello Rya Trice. I am your **HUX** Omnipresent Programmable Entity, and I am here to serve you. I am available for questions at any time, though, I may not have the answer immediately. This latency is due to the phsical nature of my logic circits, the speed of light, and the laws of space-time. If you would like me to process your query, and return an answer at a later time, please issue it using the **.query** *<subject>* command. If I know the answer at the time of query I will return it immediately, otherwise I will schedule your query and process it as soon as possible."`)
                 break
             case ASK:
                 this.onAsk(subject)
